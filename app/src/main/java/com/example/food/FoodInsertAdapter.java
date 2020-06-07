@@ -1,9 +1,6 @@
 package com.example.food;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,24 +20,33 @@ public class FoodInsertAdapter extends BaseAdapter {
     FoodDTO foodDTO;
     private List<FoodDTO> list;
 
-    private ArrayList<FoodDTO> items = new ArrayList<FoodDTO>();
+    private List items = new ArrayList();
     LayoutInflater inflater;
 
-    public FoodInsertAdapter(Context context, ArrayList<FoodDTO> list) {
+    public FoodInsertAdapter(Context context, List list) {
         this.context = context;
         this.list = list;
     }
 
+//    public FoodInsertAdapter(Context setContext, ArrayList<FoodDTO> list) {
+//        this.context = setContext;
+//        this.list = list;
+//    }
+
 
     public void setContext(Context context) {
         this.context = context;
+    }
+    public Context getContext(){
+        return context;
     }
 
     @Override
     public int getCount() {
         if(items == null){
             return 0;
-        }else return items.size();
+        }else
+            return items.size();
     }
 
     @Override
@@ -68,6 +74,9 @@ public class FoodInsertAdapter extends BaseAdapter {
             viewHolder.foodNameEdit = convertView.findViewById(R.id.foodNameEdit);
             viewHolder.foodExpirationDateEdit = convertView.findViewById(R.id.foodExpirationDateEdit);
 
+            viewHolder.foodName.setText(list.get(position).getFoodName());
+            viewHolder.foodExpirationDate.setText(list.get(position).getExpirationDate());
+
             convertView.setTag(viewHolder);
 
         }else{
@@ -79,10 +88,16 @@ public class FoodInsertAdapter extends BaseAdapter {
 
         return convertView;
     }
-    public void addItem(FoodDTO food){
-        items.add(food);
-
+    public void addItem(FoodDTO foodDTO){
+        items.add(foodDTO);
+        notifyDataSetInvalidated();
     }
+    public void addItem(List<FoodDTO> foodlist){
+        for(int i=0;i<foodlist.size();i++){
+            items.add(foodlist.get(i));
+        }
+    }
+
     static class ViewHolder{
         TextView foodName;
         TextView foodExpirationDate;

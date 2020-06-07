@@ -25,14 +25,13 @@ public class FoodInsertActivity extends AppCompatActivity {
     RadioButton foodLike;
     RadioButton foodUnLike;
 
-    FoodInsertAdapter foodInsertAdapter;
     MainActivity mainActivity;
 
-    private ArrayList<FoodDTO> list;
+    private List<FoodDTO> list;
 
-    private FoodDTO food;
+    public FoodDTO food;
     Context context;
-    Intent intent;
+    FoodInsertAdapter foodInsertAdapter = new FoodInsertAdapter(getBaseContext(), list);
     protected void onCreate(Bundle savedInstanceSstae) {
         super.onCreate(savedInstanceSstae);
         setContentView(R.layout.activity_foodinsert);
@@ -44,22 +43,20 @@ public class FoodInsertActivity extends AppCompatActivity {
         foodKategore = findViewById(R.id.foodKategore);
         foodLike = findViewById(R.id.foodLike);
         foodUnLike = findViewById(R.id.foodUnLike);
-        list = new ArrayList<>();
+        list = new ArrayList<FoodDTO>();
 
         foodOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 food = new FoodDTO(foodNameEdit.getText().toString(), foodExpirationDateEdit.getText().toString());
-
 //                intent = new Intent(getApplicationContext(), MainActivity.class);
 //                Bundle bundle = new Bundle();
 //                bundle.putSerializable("food",food);
 //                intent.putExtras(bundle);
-
-                Log.e("foodDTO",foodNameEdit.getText().toString() + " "+ foodExpirationDateEdit.getText().toString());
+//                mainActivity.list.add(list);
+                foodInsertAdapter.addItem(food);
+                Log.e("foodDTO",food.getFoodName() + " "+ food.getExpirationDate());
                 finish();
-
-
             }
         });
         foodCencel.setOnClickListener(new View.OnClickListener() {
