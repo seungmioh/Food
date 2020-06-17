@@ -9,7 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FoodInsertAdapter extends BaseAdapter {
@@ -19,7 +22,7 @@ public class FoodInsertAdapter extends BaseAdapter {
     EditText foodNameEdit, foodExpirationDateEdit;
     FoodDTO foodDTO;
     private List<FoodDTO> list;
-
+    Date date;
     private List items = new ArrayList();
     LayoutInflater inflater;
 
@@ -74,8 +77,15 @@ public class FoodInsertAdapter extends BaseAdapter {
             viewHolder.foodNameEdit = convertView.findViewById(R.id.foodNameEdit);
             viewHolder.foodExpirationDateEdit = convertView.findViewById(R.id.foodExpirationDateEdit);
 
-            viewHolder.foodName.setText(list.get(position).getFoodName());
-            viewHolder.foodExpirationDate.setText(list.get(position).getExpirationDate());
+            viewHolder.foodName.setText(list.get(position).getFood_name());
+
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            try {
+//                date = dateFormat.parse(foodExpirationDateEdit.getText().toString());
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+            viewHolder.foodExpirationDate.setText((CharSequence) list.get(position).getFood_expirationDate());
 
             convertView.setTag(viewHolder);
 

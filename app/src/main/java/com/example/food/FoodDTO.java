@@ -1,29 +1,19 @@
 package com.example.food;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class FoodDTO{
     private int no;
-    private String user;
-    private Date recordDate ;
-    private String expirationDate;
-    private String foodName;
+    private Date food_recordDate ;
+    private String food_expirationDate;
+    private String food_name;
     private String kategore;
     private int preference;
-    private int foodCheak;
-    private int remainDate;
-
-    public FoodDTO(String foodName, String expirationDate){
-        this.foodName = foodName;
-        this.expirationDate = expirationDate;
-    }
-    public FoodDTO(String foodName, String expirationDate, String kategore){
-        this.foodName = foodName;
-        this.expirationDate = expirationDate;
-        this.kategore = kategore;
-    }
+    private int food_cheak;
+    private int food_remainDate;
 
     public int getNo() {
         return no;
@@ -33,36 +23,36 @@ public class FoodDTO{
         this.no = no;
     }
 
-    public String getUser() {
-        return user;
+    public Date getFood_recordDate() {
+        return food_recordDate;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setFood_recordDate(Date food_recordDate) {
+        this.food_recordDate = food_recordDate;
     }
 
-    public Date getRecordDate() {
-        return recordDate;
+    public String getFood_expirationDate() {
+        return food_expirationDate;
     }
 
-    public void setRecordDate(Date recordDate) {
-        this.recordDate = recordDate;
+    public void setFood_expirationDate(String food_expirationDate) {
+        this.food_expirationDate = food_expirationDate;
     }
 
-    public String getExpirationDate() {
-        return expirationDate;
+    public String getFood_name() {
+        return food_name;
     }
 
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setFood_name(String food_name) {
+        this.food_name = food_name;
     }
 
-    public String getFoodName() {
-        return foodName;
+    public String getKategore() {
+        return kategore;
     }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
+    public void setKategore(String kategore) {
+        this.kategore = kategore;
     }
 
     public int getPreference() {
@@ -73,27 +63,29 @@ public class FoodDTO{
         this.preference = preference;
     }
 
-    public int getFoodCheak() {
-        return foodCheak;
+    public int getFood_cheak() {
+        return food_cheak;
     }
 
-    public void setFoodCheak(int foodCheak) {
-        this.foodCheak = foodCheak;
-    }
-    public int getRemainDate(){
-        return remainDate;
-    }
-    public void setKategore(String kategore){
-        this.kategore = kategore;
-    }
-    public String getKategore(){
-        return kategore;
-    }
-    public void setRemainDate(int remainDate){
-        this.remainDate= remainDate;
+    public void setFood_cheak(int food_cheak) {
+        this.food_cheak = food_cheak;
     }
 
+    public int getFood_remainDate() {
+        return food_remainDate;
+    }
 
+    public void setFood_remainDate(int food_remainDate) {
+        this.food_remainDate = food_remainDate;
+    }
+
+    public FoodDTO(String food_name, String food_expirationDate){
+        this.food_name = food_name;
+        this.food_expirationDate = food_expirationDate;
+    }
+    public FoodDTO(){
+
+    }
 
 }
 

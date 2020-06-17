@@ -18,6 +18,8 @@
         android:id="@+id/foodList"
         android:layout_width="match_parent"
         android:layout_height="522dp" />
+
+        //승미 바아아아보오오오오
     </LinearLayout>
 <!--    </ScrollView>-->
         <Button
